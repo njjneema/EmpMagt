@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+
+</head>
+<body ng-app="appService" ng-controller="EmpReportController">
+<div class="container"  style="width: 450px;border:1px solid silver;background-color: #eeeeff;border-radius:5px;">
+    <h1 style="text-align: center;">Employee Directory</h1>
+    <hr style="border: 1px solid silver;margin: 0px;"/>
+    <div class="form-group">
+        <div class="input-group">
+            <input style="width: 400px;height:50px;border-radius: 20px;margin-top: 15px; " type="text" class="form-control" placeholder="Search" ng-model="searchKeyword">
+        </div>
+    </div>
+    <hr style="border: 1px solid silver;margin: 0px;"/>
+
+    <table class="table ">
+        <tr ng-repeat="empls in emplDet">
+            <td style="width:50px"><img  src="images/user1.jpg"></td>
+            <td hidden>{{empls._id}}</td>
+            <td style="padding-top: 25px;">{{empls.name}}<br/>{{empls.Title}}</td>
+            <td style="color: #00B7FF;padding-top: 35px;">{{empls.Reports.length}}</td>
+            <td style="color: #00B7FF;padding-top: 35px;"><a href="#EmplDet/{{empls._id}}" >
+                <img style="height: 30px;" src="images/less.png"/></a></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+<script type="text/javascript" src="service.js"></script>
+</body>
+</html>

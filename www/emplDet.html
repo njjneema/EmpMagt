@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href = "http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+
+</head>
+<body ng-app="appService" ng-controller="EmpDetController">
+<div class="container"  style="width: 450px;border:1px solid silver;background-color: #eeeeff;border-radius:5px;">
+    <h1 style="text-align: center;">Employee
+        <a data-ng-hide="editMode" data-ng-click="editMode = true"  style="padding-left: 130px;"><img style="height: 25px;" src="images/edit.png"></a>
+        <a data-ng-show="editMode" data-ng-click="update()"  style="padding-left: 100px;"><img style="height: 25px;" src="images/Save.png"></a>
+        <a data-ng-show="editMode" data-ng-click="editMode = false"  style="padding-left: 20px;"><img style="height: 25px;" src="images/cancel.png"></a>
+    </h1>
+
+    <hr style="border: 1px solid silver;margin: 0px;"/>
+    <div class="form-group">
+        <div class="input-group">
+            <div style="padding-top: 10px;margin-top: 10px;border: transparent;" class="input-group-addon">
+                <img style="height:70px;" src="images/user1.jpg"/>
+                <span hidden>{{emplDet._id}}</span>
+            </div>
+            <div style="padding: 10px;">
+                <span style="font-weight: bold;font-size: medium;">{{emplDet.name}}</span> <br>
+                <span data-ng-hide="editMode" style="color: #777777; font-weight: bold;font-size: medium;">{{emplDet.Title}}<br>{{emplDet.Location}}
+                </span>
+                <input type="text" data-ng-show="editMode" data-ng-model="emplDet.Title" data-ng-required />
+                <input type="text" data-ng-show="editMode" data-ng-model="emplDet.Location" data-ng-required />
+            </div>
+        </div>
+    </div>
+
+    <hr style="border: 1px solid silver;margin: 0px;"/>
+    <table class="table ">
+        <tr>
+            <td style="width: 90%" ><span style="color: darkturquoise;font-weight: bold;font-size: small ">View Manager</span>
+                <br/>
+                <span data-ng-hide="editMode">{{managerDet.name}}</span>
+
+
+                <select name="Manager" ng-model="emplDet.Manager"  data-ng-show="editMode"  >
+                    <option ng-repeat="empls in emplList" value="{{empls._id}}">{{empls.name}}</option>
+                </select>
+            </td>
+            <td><a href="#EmplDet/{{managerDet._id}}" ><img style="height: 35px;"  src="images/less_grey.png"></a></td>
+        </tr>
+        <tr>
+            <td style="width: 90%" ><span style="color: darkturquoise;font-weight: bold;font-size: small ">View Direct Reports
+            </span> <br/>
+                {{emplDet.Reports.length}}</td>
+            <td><a href="#EmplRep/{{items}}" ><img style="height: 35px;"  src="images/less_grey.png"></a></td>
+        </tr>
+        <tr>
+            <td style="width: 90%" ><span style="color: darkturquoise;font-weight: bold;font-size: small ">Call Office</span>
+                <br/>
+                <span data-ng-hide="editMode">{{emplDet.Office}}</span>
+                <input type="text" data-ng-show="editMode" data-ng-model="emplDet.Office" data-ng-required />
+                </td>
+            <td><a href="#" ><img style="height: 35px;"  src="images/phone_icon.png"></a></td>
+        </tr>
+        <tr>
+            <td style="width: 90%" ><span style="color: darkturquoise;font-weight: bold;font-size: small ">Call Cell</span>
+                <br/>
+                <span data-ng-hide="editMode">{{emplDet.Cell}}</span>
+                <input type="text" data-ng-show="editMode" data-ng-model="emplDet.Cell" data-ng-required />
+                </td>
+            <td><a href="#" ><img style="height: 35px;"  src="images/phone_icon.png"></a></td>
+        </tr>
+        <tr>
+            <td style="width: 90%"><span style="color: darkturquoise;font-weight: bold;font-size: small ">SMS</span>
+                <br/>
+                <span data-ng-hide="editMode">{{emplDet.SMS}}</span>
+                <input type="text" data-ng-show="editMode" data-ng-model="emplDet.SMS" data-ng-required />
+            </td>
+            <td><a href="#" ><img style="height: 35px;"  src="images/sms.png"></a></td>
+        </tr>
+        <tr>
+            <td style="width: 90%" ><span style="color: darkturquoise;font-weight: bold;font-size: small ">Email</span>
+                <br/>
+                <span data-ng-hide="editMode">{{emplDet.Email}}</span>
+                <input type="text" data-ng-show="editMode" data-ng-model="emplDet.Email" data-ng-required />
+            </td>
+            <td><a href="#" ><img style="height: 35px;"  src="images/email.png"></a></td>
+        </tr>
+    </table>
+</div>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
+<script type="text/javascript" src="service.js"></script>
+</body>
+</html>
